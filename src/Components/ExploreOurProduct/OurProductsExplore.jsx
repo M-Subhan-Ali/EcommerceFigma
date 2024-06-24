@@ -9,10 +9,17 @@ import 'swiper/css';
 import 'swiper/css/grid';
 import 'swiper/css/pagination';
 
-const OurProductsExplore = ({setWishList}) => {
+const OurProductsExplore = ({setWishList,setCart}) => {
   const wishing=(product)=>{
     setWishList((val)=>{
-      return [...val,product]
+      const filteredData=val.filter((value)=>value.id!==product.id)
+      return [...filteredData,product];
+    })
+  }
+  const carting = (x)=>{
+    setCart((val)=>{
+      const filteredData=val.filter((value)=>value.id!==x.id)
+      return [...filteredData,x];
     })
   }
   return (
@@ -40,13 +47,13 @@ const OurProductsExplore = ({setWishList}) => {
             <p className='text-white text-[12px]'>{x.new}</p>
         </div>
         <div className='hover:bg-black absolute w-full bottom-0 bg-white text-center cursor-pointer mt-3  '>
-            <button className='text-white py-2 text-[16px] font-sans font-[500] '>Add To Cart</button>
+            <button onClick={()=>carting(x)} className='text-white py-2 text-[16px] font-sans font-[500] '>Add To Cart</button>
         </div>
         </div>
       <div className='detail-Explore pt-2'>
         <p className='text-[16px] font-sans font-[600] leading-6'>{x.title}</p>
         <div className="Sub-Details flex gap-3 py-2">
-            <p className='text-[16px] font-[600] text-[#db4444]'>${x.actualPrice}</p>
+            <p className='text-[16px] font-[600] text-[#db4444]'>${x.currentPrice}</p>
             <div ><StarExplore stars={x.starRate}/></div> 
             <p className='text-[14px] font-[600] text-[#808080]'>({x.reviews})</p>
         </div>

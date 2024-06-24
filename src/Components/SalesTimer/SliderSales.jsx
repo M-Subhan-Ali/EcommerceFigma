@@ -7,10 +7,19 @@ import {Navigation,FreeMode} from 'swiper/modules';
 
 import 'swiper/css';
 
-const SliderSales = ({setWishList}) => {
+const SliderSales = ({setWishList,setCart}) => {
   const wishing=(value)=>{
-    setWishList((val)=>{return [...val,value]});
+    setWishList((val)=>{
+      const filteredData=val.filter((val)=>val.id!==value.id)
+      return [...filteredData,value]
+    });
   }
+  const carting=(value)=>{
+  setCart((val)=>{
+    const filteredData=val.filter((val)=>val.id!==value.id);
+    return [...filteredData,value];
+  })
+  } 
   return (
     <div className='container mx-auto'>
 
@@ -28,7 +37,7 @@ const SliderSales = ({setWishList}) => {
           <div className='bg-[#f5f5f5] h-[250px]'>
                 <p className='text-xs w-14 h-6 rounded-md pt-1 text-white text-center font-sans font-[400] bg-[#db4444]'>{value.discount}%</p>
                 <img src={value.img} className='mx-auto  h-44 pt-9 ' alt={value.title|| 'productImage'} />
-               <div className='  bg-[#f5f5f5] text-[#f5f5f5] hover:bg-black   text-center py-2 mt-2 cursor-pointer'><button className='text-[16px] font-[500] text-white'>Add to cart</button></div>
+               <div className='  bg-[#f5f5f5] text-[#f5f5f5] hover:bg-black   text-center py-2 mt-2 cursor-pointer'><button onClick={()=>carting(value)} className='text-[16px] font-[500] text-white'>Add to cart</button></div>
           </div>
                 <p className='text-[16px] font-sans font-[600] pt-10 leading-6'>{value.title}</p>
                 <div className='flex gap-3 leading-6'>

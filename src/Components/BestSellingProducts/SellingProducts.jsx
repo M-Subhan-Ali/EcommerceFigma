@@ -6,7 +6,10 @@ import {DataSelling} from '../BestSellingProducts/SellingData.jsx';
 
 const SellingProducts = ({setWishList}) => {
   const wishing=(product)=>{
-    setWishList((val)=>{return [...val,product]})
+    setWishList((val)=>{
+      const filteredData=val.filter((value)=>value.id!==product.id)
+      return [...filteredData,product];
+    })
   }
   return (
     <div className='flex gap-6'>

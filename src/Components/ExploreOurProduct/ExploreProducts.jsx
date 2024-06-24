@@ -3,7 +3,7 @@ import PinkBox from '../ExploreOurProduct/Images/pinkBox.png';
 import Left from '../ExploreOurProduct/Images/left.png';
 import Right from '../ExploreOurProduct/Images/right.png';
 import OurProductsExplore from '../ExploreOurProduct/OurProductsExplore.jsx';
-const ExploreProducts = ({setWishList}) => {
+const ExploreProducts = ({setWishList,setCart}) => {
   return (
     <div className='container mx-auto mt-32'>
       <div className='px-[6%] '>
@@ -21,7 +21,7 @@ const ExploreProducts = ({setWishList}) => {
       </div>
       </div>
       <div>
-        <OurProductsExplore setWishList={setWishList}/>
+        <OurProductsExplore setCart={setCart} setWishList={setWishList}/>
       </div>
       <div className='w-[234px] h-14 flex items-center justify-center bg-[#db4444] rounded mt-16 mx-auto'>
         <p className='text-white cursor-pointer'>View All Products</p>

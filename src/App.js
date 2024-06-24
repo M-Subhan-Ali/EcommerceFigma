@@ -30,26 +30,27 @@ const [data1,setData1]=useState({
   const [operation,setOpeartion]=useState([])
   const [operation1,setOpeartion1]=useState([])
   const [wishlist,setWishList]=useState([])
+  const [cart,setCart]=useState([]);
   return (
     <>
     <BrowserRouter>
     <TopHeader/>
-    <Exclusive operation1={operation1} wishlist={wishlist} />
+    <Exclusive operation1={operation1} wishlist={wishlist} cart={cart} />
     <Routes>
       <Route path='/' element={<>
     <Shop/>
-    <SalesTimer setWishList={setWishList}/>
+    <SalesTimer setCart={setCart} setWishList={setWishList}/>
     <Categories/>
     <Selling setWishList={setWishList}/>
     <MusicEnhance/>
-    <ExploreProducts  setWishList={setWishList}/>
+    <ExploreProducts setCart={setCart}  setWishList={setWishList}/>
     <Arrival/>
     <Delievery/>
       </>}  />
      <Route path='/signup' element={<Signup data={data} setData={setData} setOpeartion={setOpeartion} />}  />
      <Route path="/login" element={<Login data1={data1} setData1={setData1} operation={operation}  setOpeartion1={setOpeartion1} />} />
      <Route path='/wishlist' element={ <WishList wishlist={wishlist} setWishList={setWishList}/> } />
-     <Route path="/cart" element={<Cart/>} />
+     <Route path="/cart" element={<Cart cart={cart} setCart={setCart}/>} />
     </Routes>
     <Footer/>
     </BrowserRouter>

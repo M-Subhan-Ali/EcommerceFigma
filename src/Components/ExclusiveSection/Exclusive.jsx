@@ -11,7 +11,7 @@ import { CiLogout } from "react-icons/ci";
 import line from '../ExclusiveSection/Images/UnderLine.png';
 import { Link } from 'react-router-dom';
 
-const Exclusive = ({operation1,wishlist}) => {
+const Exclusive = ({operation1,wishlist,cart}) => {
   const [active,setActive]=useState(0);
   const [dropdown,setDropdown]=useState(false);
   const HandleItem=(i)=>{
@@ -48,16 +48,18 @@ const Exclusive = ({operation1,wishlist}) => {
             </div> 
             <div className=' flex items-center justify-between gap-5'>
             <div className="relative">
-            <CiHeart className='w-[24px] h-[24px] cursor-pointer'/>
+              <Link to="/wishlist">  
+                <CiHeart className='w-[24px] h-[24px] cursor-pointer'/>
+                </Link>
                 {operation1 !== "" && <div className={`${wishlist.length===0 ? "hidden" :"block" } absolute  -top-1 -right-1 bg-[#db4444] px-1 rounded-full`}>
                   <p className='text-white text-xs'>{wishlist.length}</p>
                   </div> }
                 </div>
                 
                 <div className="relative">
-                <IoCartOutline className='w-[24px] h-[24px] cursor-pointer'/>
-                {operation1 !== "" && <div className={`${wishlist.length===0 ? "hidden" :"block" } absolute  -top-1 -right-1 bg-[#db4444] px-1 rounded-full`}>
-                  <p className='text-white text-xs'>{wishlist.length}</p>
+                <Link to='/cart'><IoCartOutline className='w-[24px] h-[24px] cursor-pointer'/></Link>
+                {<div className={`${cart.length===0 ? "hidden" :"block" } absolute  -top-1 -right-1 bg-[#db4444] px-1 rounded-full`}>
+                  <p className='text-white text-xs'>{cart.length}</p>
                   </div> }
                 </div>
               {operation1 !== "" &&  <div className=' hover:rounded-full hover:bg-[#db4444] '>

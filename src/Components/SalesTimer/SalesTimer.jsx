@@ -3,7 +3,7 @@ import top from '../SalesTimer/images/top.png';
 import arrow1 from '../SalesTimer/images/arrow1.png';
 import arrow2 from '../SalesTimer/images/arrow2.png';
 import SliderSales from './SliderSales';
-const SalesTimer = ({setWishList}) => {
+const SalesTimer = ({setWishList,setCart}) => {
     const duration=731*24*60*60*1000;
    const [time , setTime]=useState(duration);
    
@@ -100,7 +100,7 @@ const SalesTimer = ({setWishList}) => {
        </div>
       </div>
       <div className='w-full px-[6%]'>
-        <SliderSales setWishList={setWishList}/>
+        <SliderSales setCart={setCart} setWishList={setWishList}/>
       </div>
     </div>
   )
