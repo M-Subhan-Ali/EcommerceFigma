@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { RxCrossCircled } from "react-icons/rx";
 import { Link } from 'react-router-dom';
 
-const Cart = ({cart,setCart}) => {
+const Cart = ({cart,setCart,billing,setBilling}) => {
  const [quantity,setQuantity]=useState(cart.map(()=>1));
  const [total,setTotal]=useState(0);
  useEffect(()=>{
@@ -24,6 +24,7 @@ const Cart = ({cart,setCart}) => {
      newQuantity[index]=ee.padStart(2,"0");
    }
    setQuantity(newQuantity);
+   setBilling(newQuantity);
  }
 
 const Delete=(i)=>{
@@ -98,8 +99,10 @@ const Delete=(i)=>{
               <p>${total}</p>
               </div>
               <div className='flex justify-center'>
-                <button  className='py-4 px-12  border border-gray-400 rounded bg-[#db4444] text-white font-medium'>
+               <Link to="/billing">
+               <button  className='py-4 px-12  border border-gray-400 rounded bg-[#db4444] text-white font-medium'>
                   Procees to checkout</button>
+               </Link> 
               </div>
             </div>
           </div>

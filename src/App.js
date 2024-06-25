@@ -17,6 +17,7 @@ import Login from './Components/Login/Login.jsx';
 import {useState} from 'react'
 import WishList from './Components/Wishlist/WishList.jsx';
 import Cart from './Components/Cart/Cart.jsx';
+import BillingDetails from './Components/BillingDetails/BillingDetails.jsx';
 function App() {
   const [data,setData]=useState({
     name:'',
@@ -31,6 +32,7 @@ const [data1,setData1]=useState({
   const [operation1,setOpeartion1]=useState([])
   const [wishlist,setWishList]=useState([])
   const [cart,setCart]=useState([]);
+  const [billing,setBilling]=useState([])
   return (
     <>
     <BrowserRouter>
@@ -50,7 +52,8 @@ const [data1,setData1]=useState({
      <Route path='/signup' element={<Signup data={data} setData={setData} setOpeartion={setOpeartion} />}  />
      <Route path="/login" element={<Login data1={data1} setData1={setData1} operation={operation}  setOpeartion1={setOpeartion1} />} />
      <Route path='/wishlist' element={ <WishList wishlist={wishlist} setWishList={setWishList}/> } />
-     <Route path="/cart" element={<Cart cart={cart} setCart={setCart}/>} />
+     <Route path="/cart" element={<Cart cart={cart} setCart={setCart} billing={billing} setBilling={setBilling}/>} />
+     <Route path='/billing' element={<BillingDetails  cart={cart} billing={billing} setBilling={setBilling}   />}/>
     </Routes>
     <Footer/>
     </BrowserRouter>
