@@ -1,44 +1,71 @@
-import React from 'react'
+import React, { useState } from 'react'
 import img1 from "../BillingDetails/images/img1.png"
 import img2 from "../BillingDetails/images/img2.png"
 import img3 from "../BillingDetails/images/img3.png"
 import img4 from "../BillingDetails/images/img4.png"
 
-const BillingDetails = ({cart}) => {
+const BillingDetails = ({cart,billing,billingsTotal,setBillingsTotal}) => {
+  const [shipping,setShipping]=useState("Free")
+  const [data,setData]=useState({
+    name:"",
+    company:"",
+    address:"",
+    floor:"",
+    city:"",
+    number:0,
+    email:""
+  })
+
+  const Handler=(e)=>{
+    const {name,value}=e.target;
+    setData((val)=>{
+      return{...val,[name]:value}
+    })
+    if(data.city==="ShadBagh"){
+     setShipping(50)
+   }
+  }
+
+  const HandlerSubmit=(e)=>{
+    e.preventDefault()
+  }
+ 
+
+
   return (
     <div className='container mx-auto'>
       <div className="px-[6%]">
         <h1 className='text-3xl font-semibold font-sans mt-28'>Billing Details</h1>
         <div className='grid grid-cols-2 gap-[15%]'>
             <div>
-              <form>
+              <form onSubmit={HandlerSubmit}>
                 <div className="inputsBillings pt-9">
                 <p className='text-[#999999] pb-1'>First Name<span className='text-[#db4444] opacity-50'>*</span></p>
-                <input type="text" required className='ps-4 bg-[#f5f5f5] h-12 w-full rounded' />
+                <input value={data.name} name="name" onChange={Handler} type="text" required className='ps-4 bg-[#f5f5f5] h-12 w-full rounded' />
                 </div>
                 <div className="inputsBillings pt-9">
                 <p className='text-[#999999] pb-1'>Company Name</p>
-                <input type="text" className='ps-4 bg-[#f5f5f5] h-12 w-full rounded' />
+                <input value={data.company} name="company" onChange={Handler} type="text" className='ps-4 bg-[#f5f5f5] h-12 w-full rounded' />
                 </div>
                 <div className="inputsBillings pt-9">
                 <p className='text-[#999999] pb-1'>Street Address</p>
-                <input type="text" className='ps-4 bg-[#f5f5f5] h-12 w-full rounded' />
+                <input value={data.address} name="address" onChange={Handler} type="text" className='ps-4 bg-[#f5f5f5] h-12 w-full rounded' />
                 </div>
                 <div className="inputsBillings pt-9">
                 <p className='text-[#999999] pb-1'>Apartment, floor, etc. (optional)</p>
-                <input type="text" className='ps-4 bg-[#f5f5f5] h-12 w-full rounded' />
+                <input value={data.floor} name="floor" onChange={Handler} type="text" className='ps-4 bg-[#f5f5f5] h-12 w-full rounded' />
                 </div>
                 <div className="inputsBillings pt-9">
                 <p className='text-[#999999] pb-1'>Town/City<span className='text-[#db4444] opacity-50'>*</span></p>
-                <input type="text" required className='ps-4 bg-[#f5f5f5] h-12 w-full rounded' />
+                <input value={data.city} name="city" onChange={Handler} type="text" required className='ps-4 bg-[#f5f5f5] h-12 w-full rounded' />
                 </div>
                 <div className="inputsBillings pt-9">
                 <p className='text-[#999999] pb-1'>Phone Number<span className='text-[#db4444] opacity-50'>*</span></p>
-                <input type="text" required className='ps-4 bg-[#f5f5f5] h-12 w-full rounded' />
+                <input value={data.number} name="number" onChange={Handler} type="text" required className='ps-4 bg-[#f5f5f5] h-12 w-full rounded' />
                 </div>
                 <div className="inputsBillings pt-9">
                 <p className='text-[#999999] pb-1'>Email Address<span className='text-[#db4444] opacity-50'>*</span></p>
-                <input type="text" required  className='ps-4 bg-[#f5f5f5] h-12 w-full rounded' />
+                <input value={data.email} name="email" onChange={Handler} type="text" required  className='ps-4 bg-[#f5f5f5] h-12 w-full rounded' />
                 </div>
                 <div className='flex items-center gap-8 pt-7'>
                   <button type='submit'>
@@ -53,27 +80,27 @@ const BillingDetails = ({cart}) => {
               <div key={index} className='flex justify-between items-center pb-10' >
               <div className='flex gap-5 items-center'><img src={product.img} className='w-11 h-11' alt={product.title} />
               <p className='text-[#16px] font-medium font-sans'>{product.title}</p></div>
-              <p className='text-[#16px] font-medium font-sans'>${product.currentPrice}</p>
+              <p className='text-[#16px] font-medium font-sans'>${product.currentPrice*billing[index]}</p>
              </div>
             ))
           }
              <div className='flex justify-between border border-b-gray-600 py-4'>
               <p className='text-[#16px] font-medium font-sans'>Subtotal:</p>
-              <p className='text-[#16px] font-medium font-sans'>$1900</p>
+              <p className='text-[#16px] font-medium font-sans'>${billingsTotal}</p>
              </div>
              <div className='flex justify-between border border-b-gray-600 py-4'>
               <p className='text-[#16px] font-medium font-sans'>Shipping</p>
-              <p className='text-[#16px] font-medium font-sans'>Free</p>
+              <p className='text-[#16px] font-medium font-sans'>{shipping!=="Free" ? "$" : ""}{shipping}</p>
              </div>
              <div className='flex justify-between  py-4'>
               <p className='text-[#16px] font-medium font-sans'>Total:</p>
-              <p className='text-[#16px] font-medium font-sans'>$19000</p>
+              <p className='text-[#16px] font-medium font-sans'>${billingsTotal}</p>
              </div>
               <form>
              <div className="grid grid-cols-1 gap-6">
                 <div className='flex justify-between'>
                <div className="flex gap-3">
-                <input type="radio" className='w-5 h-5 accent-black'/>
+                <input name='hehe' type="radio" className='w-5 h-5 accent-black cursor-pointer'/>
                 <p>Bank</p>
                 </div> 
                 <div className='flex items-center gap-3'>
@@ -84,7 +111,7 @@ const BillingDetails = ({cart}) => {
                 </div>
                 </div>
                 <div className='flex gap-3 justify-start'>
-              <input type="radio"  className='w-5 h-5 accent-black'/>
+              <input name='hehe' type="radio"  className='w-5 h-5 accent-black cursor-pointer'/>
               <p className='text-[#16px] font-medium font-sans'>Cash on delivery</p>
                 </div>
                 <div className='flex items-center gap-4'>
@@ -92,7 +119,7 @@ const BillingDetails = ({cart}) => {
                     <input type="text" placeholder='Coupon Code'  className='py-4 border w-full border-black rounded '/>
                   </div>
                   <div className='flex justify-center '>
-                  <button className='w-[211px]  h-14 py-4 px-4 bg-[#db4444] text-white rounded'>Apply Coupon</button>
+                  <p className='w-[211px]  h-14 py-4 px-4 bg-[#db4444] text-center cursor-pointer text-white rounded'>Apply Coupon</p>
                   </div>
                 </div>
                 <div className="flex justify-between">

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { RxCrossCircled } from "react-icons/rx";
 import { Link } from 'react-router-dom';
 
-const Cart = ({cart,setCart,billing,setBilling}) => {
+const Cart = ({cart,setCart,billing,setBilling,billingsTotal,setBillingsTotal}) => {
  const [quantity,setQuantity]=useState(cart.map(()=>1));
  const [total,setTotal]=useState(0);
  useEffect(()=>{
@@ -12,6 +12,7 @@ const Cart = ({cart,setCart,billing,setBilling}) => {
     totals+=product.currentPrice*parseInt(quantity[index])
   })
   setTotal(totals)
+  setBillingsTotal(totals)
 
  },[cart,quantity])
  
@@ -21,7 +22,7 @@ const Cart = ({cart,setCart,billing,setBilling}) => {
    if(newQuantity[index]<1){
     newQuantity[index]=1
    }else{
-     newQuantity[index]=ee.padStart(2,"0");
+     newQuantity[index]=parseInt(ee.padStart(2,"0"));
    }
    setQuantity(newQuantity);
    setBilling(newQuantity);
