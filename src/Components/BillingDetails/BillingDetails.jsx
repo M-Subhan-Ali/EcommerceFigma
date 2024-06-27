@@ -5,7 +5,7 @@ import img3 from "../BillingDetails/images/img3.png"
 import img4 from "../BillingDetails/images/img4.png"
 
 const BillingDetails = ({cart,billing,billingsTotal,setBillingsTotal}) => {
-  const [shipping,setShipping]=useState("Free")
+  const [shipping,setShipping]=useState(0)
   const [data,setData]=useState({
     name:"",
     company:"",
@@ -15,6 +15,7 @@ const BillingDetails = ({cart,billing,billingsTotal,setBillingsTotal}) => {
     number:0,
     email:""
   })
+  console.log(billingsTotal)
 
   const Handler=(e)=>{
     const {name,value}=e.target;
@@ -23,7 +24,7 @@ const BillingDetails = ({cart,billing,billingsTotal,setBillingsTotal}) => {
     })
     if(data.city==="ShadBagh"){
      setShipping(50)
-   }
+    }
   }
 
   const HandlerSubmit=(e)=>{
@@ -34,9 +35,9 @@ const BillingDetails = ({cart,billing,billingsTotal,setBillingsTotal}) => {
 
   return (
     <div className='container mx-auto'>
-      <div className="px-[6%]">
+      <div className="px-[6%] mb-[10%]">
         <h1 className='text-3xl font-semibold font-sans mt-28'>Billing Details</h1>
-        <div className='grid grid-cols-2 gap-[15%]'>
+        <div className='grid grid-cols-2 items-center gap-[15%]'>
             <div>
               <form onSubmit={HandlerSubmit}>
                 <div className="inputsBillings pt-9">
@@ -90,11 +91,11 @@ const BillingDetails = ({cart,billing,billingsTotal,setBillingsTotal}) => {
              </div>
              <div className='flex justify-between border border-b-gray-600 py-4'>
               <p className='text-[#16px] font-medium font-sans'>Shipping</p>
-              <p className='text-[#16px] font-medium font-sans'>{shipping!=="Free" ? "$" : ""}{shipping}</p>
+              <p  className='text-[#16px] font-medium font-sans'>{shipping === 50 ? "$50" : "Free"}</p>
              </div>
              <div className='flex justify-between  py-4'>
               <p className='text-[#16px] font-medium font-sans'>Total:</p>
-              <p className='text-[#16px] font-medium font-sans'>${billingsTotal}</p>
+              <p className='text-[#16px] font-medium font-sans'>${billingsTotal+shipping}</p>
              </div>
               <form>
              <div className="grid grid-cols-1 gap-6">
@@ -116,7 +117,7 @@ const BillingDetails = ({cart,billing,billingsTotal,setBillingsTotal}) => {
                 </div>
                 <div className='flex items-center gap-4'>
                   <div className='flex items-center justify-center w-full '>
-                    <input type="text" placeholder='Coupon Code'  className='py-4 border w-full border-black rounded '/>
+                    <input type="text" placeholder='Coupon Code'  className='py-4 ps-4 border w-full border-black rounded '/>
                   </div>
                   <div className='flex justify-center '>
                   <p className='w-[211px]  h-14 py-4 px-4 bg-[#db4444] text-center cursor-pointer text-white rounded'>Apply Coupon</p>

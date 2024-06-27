@@ -18,6 +18,7 @@ import {useState} from 'react'
 import WishList from './Components/Wishlist/WishList.jsx';
 import Cart from './Components/Cart/Cart.jsx';
 import BillingDetails from './Components/BillingDetails/BillingDetails.jsx';
+import Account from './Components/Account/Account.jsx';
 function App() {
   const [data,setData]=useState({
     name:'',
@@ -56,6 +57,7 @@ const [data1,setData1]=useState({
      <Route path='/wishlist' element={ <WishList wishlist={wishlist} setWishList={setWishList}/> } />
      <Route path="/cart" element={<Cart cart={cart} setCart={setCart} billing={billing} setBilling={setBilling} billingsTotal={billingsTotal} setBillingsTotal={setBillingsTotal}/>} />
      <Route path='/billing' element={<BillingDetails  cart={cart} billing={billing} setBilling={setBilling} billingsTotal={billingsTotal} setBillingsTotal={setBillingsTotal}   />}/>
+     <Route path='/account' element={<Account  />} />
     </Routes>
     <Footer/>
     </BrowserRouter>
