@@ -19,6 +19,7 @@ import WishList from './Components/Wishlist/WishList.jsx';
 import Cart from './Components/Cart/Cart.jsx';
 import BillingDetails from './Components/BillingDetails/BillingDetails.jsx';
 import Account from './Components/Account/Account.jsx';
+import About from './Components/About/About.jsx';
 function App() {
   const [data,setData]=useState({
     name:'',
@@ -52,6 +53,7 @@ const [data1,setData1]=useState({
     <Arrival/>
     <Delievery/>
       </>}  />
+      <Route path='/about' element={ <About/> }  />
      <Route path='/signup' element={<Signup data={data} setData={setData} setOpeartion={setOpeartion} />}  />
      <Route path="/login" element={<Login data1={data1} setData1={setData1} operation={operation}  setOpeartion1={setOpeartion1} />} />
      <Route path='/wishlist' element={ <WishList wishlist={wishlist} setWishList={setWishList}/> } />
