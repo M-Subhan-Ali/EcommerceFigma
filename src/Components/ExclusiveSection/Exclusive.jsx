@@ -36,7 +36,7 @@ const Exclusive = ({operation1,wishlist,cart}) => {
             <li onClick={()=>(HandleItem(0))}><Link to="/">Home</Link></li>
             <img src={line} alt="line" style={{left: `${active * 105}px` }}  className='absolute bottom-0  ' />
             <li onClick={()=>(HandleItem(1))}>Contact</li>
-            <li onClick={()=>(HandleItem(2))}>About</li>
+            <li onClick={()=>(HandleItem(2))}><Link to='/about'>About</Link></li>
             <li onClick={()=>(HandleItem(3))}><Link to='/signup'>Sign Up</Link></li>
          </ul>
             </div> 
