@@ -35,7 +35,7 @@ const Exclusive = ({operation1,wishlist,cart}) => {
          <ul className='flex text-[16px] lg:gap-12 font-[400] cursor-pointer font-sans'>
             <li onClick={()=>(HandleItem(0))}><Link to="/">Home</Link></li>
             <img src={line} alt="line" style={{left: `${active * 105}px` }}  className='absolute bottom-0  ' />
-            <li onClick={()=>(HandleItem(1))}>Contact</li>
+            <li onClick={()=>(HandleItem(1))}><Link to="/contact">Contact</Link></li>
             <li onClick={()=>(HandleItem(2))}><Link to='/about'>About</Link></li>
             <li onClick={()=>(HandleItem(3))}><Link to='/signup'>Sign Up</Link></li>
          </ul>

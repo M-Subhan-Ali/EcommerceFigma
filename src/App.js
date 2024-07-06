@@ -21,6 +21,7 @@ import BillingDetails from './Components/BillingDetails/BillingDetails.jsx';
 import Account from './Components/Account/Account.jsx';
 import About from './Components/About/About.jsx';
 import Contact from './Components/Contact/Contact.jsx';
+import Error from './Components/Error/Error.jsx';
 function App() {
   const [data,setData]=useState({
     name:'',
@@ -66,6 +67,7 @@ const [data1,setData1]=useState({
      <Route path="/cart" element={<Cart cart={cart} setCart={setCart} billing={billing} setBilling={setBilling} billingsTotal={billingsTotal} setBillingsTotal={setBillingsTotal}/>} />
      <Route path='/billing' element={<BillingDetails  cart={cart} billing={billing} setBilling={setBilling} billingsTotal={billingsTotal} setBillingsTotal={setBillingsTotal}   />}/>
      <Route path='/account' element={<Account  />} />
+     <Route path='/error' element={<Error/>}/>
     </Routes>
     <Footer/>
     </BrowserRouter>
