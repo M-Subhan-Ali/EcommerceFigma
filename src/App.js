@@ -69,7 +69,7 @@ const [data1,setData1]=useState({
      <Route path='/billing' element={<BillingDetails  cart={cart} billing={billing} setBilling={setBilling} billingsTotal={billingsTotal} setBillingsTotal={setBillingsTotal}   />}/>
      <Route path='/account' element={<Account  />} />
      <Route path='/error' element={<Error/>}/>
-     <Route path='.productDetail'  element={<ProductDetail/>} />
+     <Route path='/productDetail'  element={<ProductDetail/>} />
     </Routes>
     <Footer/>
     </BrowserRouter>
