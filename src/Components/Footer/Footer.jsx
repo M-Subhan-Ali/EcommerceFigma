@@ -34,7 +34,7 @@ const Footer = () => {
             <div className="text-white">
             <h1 className='text-[24px]  font-[600]'>Account</h1>
             <div className='flex flex-col gap-4 pt-6 cursor-pointer' >
-                <p>My Account</p>
+                <Link to="/account">My Account</Link>
                 <p>Login / Registert</p>
                 <Link to='/cart'>Cart</Link>
                 <Link to="/wishlist">Wishlist</Link>

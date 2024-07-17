@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { ToastContainer,toast } from 'react-toastify'
-const Account = () => {
+const Account = ({operation1}) => {
     const [data1,setData1]=useState({
         name:"",
         last:"",
@@ -25,7 +25,7 @@ const Account = () => {
       setStoreData(data1)
       
 
-      if(data1.currentPass!=="password1234"){
+      if(storeData.currentPass!==operation1.password){
           toast.error("Current Password Does Not Match",{
             position:"top-right",
             theme:"dark"

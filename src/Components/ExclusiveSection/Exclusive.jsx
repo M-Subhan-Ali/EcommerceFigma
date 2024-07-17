@@ -71,7 +71,7 @@ const Exclusive = ({operation1,wishlist,cart}) => {
                   <div className="sub-icon-main flex  z-50 flex-col gap-3 text-white cursor-pointer">
                     <div className='flex  gap-3 items-center '>
                       <FiUser className='w-8 h-6 '/>
-                       <p>Manage My Account</p>
+                       <Link to="/account">Manage My Account</Link>
                     </div>
                     <div className='flex  gap-3 items-center'>
                       <FiShoppingBag className='w-8 h-6 '/>

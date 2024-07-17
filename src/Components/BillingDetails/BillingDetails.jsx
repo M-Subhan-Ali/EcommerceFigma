@@ -70,7 +70,7 @@ const BillingDetails = ({cart,billing,billingsTotal,setBillingsTotal}) => {
                 </div>
                 <div className='flex items-center gap-8 pt-7'>
                   <button type='submit'>
-                    <input type="checkbox"  className=' text-white w-5 h-5 accent-[#db4444] cursor-pointer rounded p-1 ' />
+                    <input type="checkbox" required  className=' text-white w-5 h-5 accent-[#db4444] cursor-pointer rounded p-1 ' />
                     </button>
                   <p className='text-[#16px] font-sans font-normal'>Save this information for faster check-out next time</p>
                 </div>

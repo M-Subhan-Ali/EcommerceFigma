@@ -6,9 +6,18 @@ import pinkBox from '../Wishlist/images/pinkBox.png';
 import StarsWish from './StarsWish';
 import {WishData} from './DataWishlist.jsx'
 
-const WishList = ({wishlist,setWishList}) => {
+const WishList = ({wishlist,setWishList,setCart}) => {
     const Delete=(i)=>{
      setWishList((product)=>product.filter((x)=>x.id!==i))
+    }
+
+    const carting=(item)=>{
+      console.log(item.id)
+      setCart((product)=>{
+      const filteredProduct=product.filter((val)=>val.id!==item.id)
+      return [...filteredProduct,item]
+    }
+      )
     }
 
   return (
@@ -37,7 +46,7 @@ const WishList = ({wishlist,setWishList}) => {
         <div className="flex justify-center h-64 bg-[#f5f5f5]">
        <img src={x.img} className='object-contain px-10' alt={x.title} />
         </div>
-       <div className='flex items-center justify-center gap-2 py-2 mb-4 bg-black text-white cursor-pointer'>
+       <div onClick={()=>carting(x)} className='flex items-center justify-center gap-2 py-2 mb-4 bg-black text-white cursor-pointer'>
             <IoCartOutline className='w-6 h-6'/>  
         <button className='text-xs'>
         Add To Cart
@@ -82,7 +91,7 @@ const WishList = ({wishlist,setWishList}) => {
            <div className='flex justify-center items-center h-64 bg-[#f5f5f5] rounded'>
             <img src={data.img} alt={data.title} />
            </div>
-           <div className='flex items-center justify-center gap-2 py-2 mb-4 bg-black text-white cursor-pointer'>
+           <div onClick={()=>carting(data)} className='flex items-center justify-center gap-2 py-2 mb-4 bg-black text-white cursor-pointer'>
             <IoCartOutline className='w-6 h-6'/>  
         <button className='text-xs'>
         Add To Cart
