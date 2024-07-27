@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { ToastContainer,toast } from 'react-toastify'
+import BreadCrumbs from '../BreadCrumbs/BreadCrumbs'
 const Account = ({operation1}) => {
     const [data1,setData1]=useState({
         name:"",
@@ -53,10 +54,11 @@ const Account = ({operation1}) => {
   
     }
   return (
-    <div className='container mx-auto mt-7'>
+    <div className='container mx-auto '>
         <div className="px-[6%]">
-            <div>
-                <p className='font-medium pb-2'>Welcome! <span className='font-medium pb-2 text-[#db4444]'>{ storeData.name}</span>
+            <div className='flex justify-between items-center pb-20'>
+                <BreadCrumbs breadcrumb="My Account"/>
+                <p className='font-medium pt-20'>Welcome! <span className='font-medium  text-[#db4444]'>{ storeData.name}</span>
                </p></div>
             <div className="flex gap-[15%]">
             <div className='w-[25%] cursor-pointer'>

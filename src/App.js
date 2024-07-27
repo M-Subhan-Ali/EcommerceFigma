@@ -39,6 +39,7 @@ const [data1,setData1]=useState({
   const [cart,setCart]=useState([]);
   const [billing,setBilling]=useState([])
   const [billingsTotal,setBillingsTotal]=useState()
+  const [active,setActive]=useState("")
   return (
     <>
     <BrowserRouter>
@@ -64,7 +65,7 @@ const [data1,setData1]=useState({
      <Route path='/signup' element={<Signup data={data} setData={setData} setOpeartion={setOpeartion} />}  />
      <Route path="/login" element={<Login data1={data1} setData1={setData1} operation={operation}  setOpeartion1={setOpeartion1} />} />
      <Route path='/wishlist' element={ <WishList wishlist={wishlist} setWishList={setWishList} setCart={setCart}/> } />
-     <Route path="/cart" element={<Cart cart={cart} setCart={setCart} billing={billing} setBilling={setBilling} billingsTotal={billingsTotal} setBillingsTotal={setBillingsTotal}/>} />
+     <Route path="/cart" element={<Cart cart={cart} setCart={setCart} billing={billing} setBilling={setBilling} billingsTotal={billingsTotal} setBillingsTotal={setBillingsTotal} active={active} setActive={setActive}/>} />
      <Route path='/billing' element={<BillingDetails  cart={cart} billing={billing} setBilling={setBilling} billingsTotal={billingsTotal} setBillingsTotal={setBillingsTotal}   />}/>
      <Route path='/account' element={<Account  operation1={operation1} />} />
      <Route path='/error' element={<Error/>}/>

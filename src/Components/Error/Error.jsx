@@ -1,9 +1,13 @@
 import React from 'react'
+import BreadCrumbs from '../BreadCrumbs/BreadCrumbs'
 
 const Error = () => {
   return (
-    <div className='container mx-auto py-20'>
+    <div className='container mx-auto pb-20'>
         <div className="px-[6%]">
+          <div className="pb-20">
+          <BreadCrumbs breadcrumb="Error"/>
+          </div>
         <div className="content flex flex-col gap-20 items-center">
             <div className='text-center '>
             <h1 className='text-8xl font-semibold'>404 Not Found</h1>

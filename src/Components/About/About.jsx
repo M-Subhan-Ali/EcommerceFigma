@@ -11,6 +11,7 @@ import frame from './image/frame.png';
 import { FiTwitter } from "react-icons/fi";
 import { IoLogoInstagram } from "react-icons/io5";
 import { FaLinkedinIn } from "react-icons/fa";
+import BreadCrumbs from '../BreadCrumbs/BreadCrumbs';
 
 
 const About = () => {
@@ -23,7 +24,10 @@ const About = () => {
 
   return (
     <div className='OurStory-Section'>
-      <div className="ps-[6%] py-24">
+      <div className="ps-[6%] pb-24">
+         <div className="pb-6">
+          <BreadCrumbs breadcrumb="About"/>
+          </div> 
         <div className="grid grid-cols-2">
             <div className='flex flex-col justify-center'>
                 <p className='text-6xl font-semibold tracking-wide pb-[7%]'>Our Story</p>

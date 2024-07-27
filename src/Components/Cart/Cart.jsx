@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 // import Breadcrumbs from '@mui/material/Breadcrumbs';
 import { RxCrossCircled } from "react-icons/rx";
 import { Link } from 'react-router-dom';
+import BreadCrumbs from '../BreadCrumbs/BreadCrumbs';
 
-const Cart = ({cart,setCart,billing,setBilling,billingsTotal,setBillingsTotal}) => {
+const Cart = ({cart,setCart,billing,setBilling,billingsTotal,setBillingsTotal,active,setActive}) => {
  const [quantity,setQuantity]=useState(cart.map(()=>1));
  const [total,setTotal]=useState(0);
  useEffect(()=>{
@@ -39,6 +40,7 @@ const Delete=(i)=>{
   return (
     <div className='container mx-auto'>
       <div className="px-[6%]">
+        <BreadCrumbs breadcrumb="Cart"/>
         <div className='px-10 py-6 mt-16'>
           <ul className='flex  items-center text-[16px] font-medium font-sans pb-10 '>
             <li className='w-[25%]'>

@@ -1,11 +1,15 @@
 import React from 'react'
 import { LuPhone } from "react-icons/lu";
 import { MdOutlineEmail } from "react-icons/md";
+import BreadCrumbs from '../BreadCrumbs/BreadCrumbs';
 
 const Contact = () => {
   return (
-    <div className='container mx-auto py-20'>
+    <div className='container mx-auto pb-20'>
         <div className="px-[6%] py-2">
+         <div className="pb-16">
+           <BreadCrumbs breadcrumb="Contact"/>
+          </div>
         <div className="flex justify-between">
             <div className='shadow-xl pt-10 px-9'>
                 <div className="border border-b-gray-400 border-t-0 border-x-0  ">
