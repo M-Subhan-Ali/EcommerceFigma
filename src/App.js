@@ -23,6 +23,7 @@ import About from './Components/About/About.jsx';
 import Contact from './Components/Contact/Contact.jsx';
 import Error from './Components/Error/Error.jsx';
 import ProductDetail from './Components/ProductDetailPage/ProductDetail.jsx';
+import GameElectronic from './Components/Product-Gaming-Electronic-Section/GameElectronic.jsx';
 function App() {
   const [data,setData]=useState({
     name:'',
@@ -61,6 +62,7 @@ const [data1,setData1]=useState({
       <Delievery/>
       </> 
          }  />
+         
      <Route path='/contact' element={ <Contact/> } />    
      <Route path='/signup' element={<Signup data={data} setData={setData} setOpeartion={setOpeartion} />}  />
      <Route path="/login" element={<Login data1={data1} setData1={setData1} operation={operation}  setOpeartion1={setOpeartion1} />} />
@@ -68,8 +70,9 @@ const [data1,setData1]=useState({
      <Route path="/cart" element={<Cart cart={cart} setCart={setCart} billing={billing} setBilling={setBilling} billingsTotal={billingsTotal} setBillingsTotal={setBillingsTotal} active={active} setActive={setActive}/>} />
      <Route path='/billing' element={<BillingDetails  cart={cart} billing={billing} setBilling={setBilling} billingsTotal={billingsTotal} setBillingsTotal={setBillingsTotal}   />}/>
      <Route path='/account' element={<Account  operation1={operation1} />} />
-     <Route path='/error' element={<Error/>}/>
      <Route path='/productDetail'  element={<ProductDetail setCart={setCart} setWishList={setWishList}/>} />
+     <Route path='/gameelectronic' element={<GameElectronic/>}/>
+     <Route path="*" element={<Error/>}/>
     </Routes>
     <Footer/>
     </BrowserRouter>

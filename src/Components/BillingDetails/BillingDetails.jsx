@@ -3,9 +3,11 @@ import img1 from "../BillingDetails/images/img1.png"
 import img2 from "../BillingDetails/images/img2.png"
 import img3 from "../BillingDetails/images/img3.png"
 import img4 from "../BillingDetails/images/img4.png"
+import BreadCrumbs1 from '../BreadCrumbs/BreadCrumbs1'
 
 const BillingDetails = ({cart,billing,billingsTotal,setBillingsTotal}) => {
   const [shipping,setShipping]=useState(0)
+  const breadcrumb=["My Account","Product","View Cart","CheckOut"]
   const [data,setData]=useState({
     name:"",
     company:"",
@@ -30,13 +32,11 @@ const BillingDetails = ({cart,billing,billingsTotal,setBillingsTotal}) => {
   const HandlerSubmit=(e)=>{
     e.preventDefault()
   }
- 
-
-
   return (
     <div className='container mx-auto'>
       <div className="px-[6%] mb-[10%]">
-        <h1 className='text-3xl font-semibold font-sans mt-28'>Billing Details</h1>
+        <BreadCrumbs1 breadcumb={breadcrumb}/>
+        <h1 className='text-3xl font-semibold font-sans mt-16'>Billing Details</h1>
         <div className='grid grid-cols-2 items-center gap-[15%]'>
             <div>
               <form onSubmit={HandlerSubmit}>

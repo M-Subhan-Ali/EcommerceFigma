@@ -12,6 +12,8 @@ import { IoIosHeartEmpty } from "react-icons/io";
 import { TbTruckDelivery } from "react-icons/tb";
 import { GrPowerCycle } from "react-icons/gr";
 import SliderProduct from './SliderProduct';
+import { Link } from 'react-router-dom';
+import BreadCrumbs2 from '../BreadCrumbs/BreadCrumbs2';
 
 
 
@@ -22,6 +24,7 @@ const ProductDetail = ({setCart,setWishList}) => {
   const [counter,setCounter]=useState(1);
   const [colorCounter,setColorCounter]=useState('plus')
   const [size,setSize]=useState("M");
+  const breadCrumb=["Gaming","Electronics","Havic HV G-92 Gamepad"]
 
   const HandleClick=(index)=>{
    setSelected(index);
@@ -43,6 +46,9 @@ const ProductDetail = ({setCart,setWishList}) => {
   return (
     <div className='container mx-auto'>
       <div className="px-[6%]">
+        <div>
+          <BreadCrumbs2 breadcrumb={breadCrumb}/>
+        </div>
         <div className="flex">
           <div className="w-[60%] ">
               <div className="flex  gap-7">
@@ -113,7 +119,9 @@ const ProductDetail = ({setCart,setWishList}) => {
                   <button onClick={()=>plus("Plus")} className={`${colorCounter==="Plus"?"bg-[#db4444] text-white border-none":""} w-full h-full text-xl p-2 border border-s-gray-600 border-t-0 border-b-0 border-e-0 rounded-e-sm `}><FaPlus className={`${colorCounter==="Plus"?"bg-[#db4444] text-white": " "}  w-full h-full`}/></button>
                 </div>
                 <div className="buynow w-40">
+                  <Link  to="/billing">
                   <button className='text-[14px] h-11 px-10 font-sans tracking-wider bg-[#db4444] text-white rounded'>Buy Now</button>
+                  </Link>
                 </div>
                 <div className="hearticon">
                   <button className='flex justify-center items-center border border-gray-500 rounded py-4 px-2 h-11 hover:bg-[#db4444] hover:text-white '>

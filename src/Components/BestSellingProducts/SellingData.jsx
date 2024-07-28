@@ -26,6 +26,7 @@ export const DataSelling = [
     id:16 ,
     img: img3,
     title: "RGB liquid CPU Cooler",
+    categoryItem:"electronic",
     currentPrice: 170,
     actualPrice: 160,
     starRate: 4.4,

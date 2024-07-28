@@ -5,8 +5,8 @@ const BreadCrumbs = ({breadcrumb}) => {
   return (
     <div className="crumbs pt-20">
           <ul className='flex gap-3 text-gray-400'>
-            <Link to="/home" className='cursor-pointer'>Home</Link>
-            <li>/</li>
+            <Link to="/" className='cursor-pointer text-[#808080]'>Home</Link>
+            <li className='text-[#808080]'>/</li>
             <li className="text-black font-semibold cursor-pointer">{breadcrumb}</li>
           </ul>
         </div>
