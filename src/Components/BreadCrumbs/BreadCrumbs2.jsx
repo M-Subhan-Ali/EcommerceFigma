@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom'
 const BreadCrumbs2 = ({breadcrumb}) => {
     const GetLinkRoute=(path)=>{
         switch(path){
-            case "Gaming"||"Electronics":
-            return '/gameelectronic';
+            case "Gaming":
+            return '/gameelectronic/gaming';
+            case "Electronics":
+            return "/gameelectronic/electronic"
             default:return "/error404"; 
         }
     }

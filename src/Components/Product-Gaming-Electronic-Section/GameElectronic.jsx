@@ -3,9 +3,12 @@ import pinkBox from '../ProductDetailPage/Images/pinkBox.png';
 import {DataSelling} from '../BestSellingProducts/SellingData';
 import { FlashSaleData } from '../SalesTimer/SalesData';
 import { ExploreData } from '../ExploreOurProduct/ExploreProductData';
+import { useParams } from 'react-router-dom';
+
 const  GameElectronic= () => {
-  const datas=[DataSelling,FlashSaleData,ExploreData]
-  const dataelectronic=DataSelling.filter(item=>item.categoryItem==="electronic")
+  const datas=[...DataSelling,...FlashSaleData,...ExploreData]
+  const {category}=useParams();
+  const dataelectronic=datas.filter(item=>item.categoryItem===category)
   return (
     <div className='container'>
       <div className="px-[6%]">

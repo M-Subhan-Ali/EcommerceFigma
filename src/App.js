@@ -71,7 +71,7 @@ const [data1,setData1]=useState({
      <Route path='/billing' element={<BillingDetails  cart={cart} billing={billing} setBilling={setBilling} billingsTotal={billingsTotal} setBillingsTotal={setBillingsTotal}   />}/>
      <Route path='/account' element={<Account  operation1={operation1} />} />
      <Route path='/productDetail'  element={<ProductDetail setCart={setCart} setWishList={setWishList}/>} />
-     <Route path='/gameelectronic' element={<GameElectronic/>}/>
+     <Route path='/gameelectronic/:category' element={<GameElectronic/>}/>
      <Route path="*" element={<Error/>}/>
     </Routes>
     <Footer/>
