@@ -1,34 +1,64 @@
-import React from 'react'
-import appleLogo from '../ShopNow/imagesShop/appleLogo.png';
-import arrow1 from '../ShopNow/imagesShop/arrow1.png';
-import line from '../ShopNow/imagesShop/line.png';
+import React from "react";
+import appleLogo from "../ShopNow/imagesShop/appleLogo.png";
+import arrow1 from "../ShopNow/imagesShop/arrow1.png";
+import line from "../ShopNow/imagesShop/line.png";
 import iphone from "../ShopNow/imagesShop/iphone.png";
-import pagination from '../ShopNow/imagesShop/pagination.png';
+import pagination from "../ShopNow/imagesShop/pagination.png";
+
 const RightShop = () => {
   return (
-    <div className='bg-[#000000]  w-full'>
-      <div className="flex justify-between">
-      <div className='text-[#fafafa] font-sans lg:pt-14 lg:ps-16 '>
-        <div className='flex items-center gap-6  '>
-        <img src={appleLogo} className='w-10 h-12 ' alt="logo" /> 
-        <p className='text-xs lg:leading-[60px]'>iPhone 14 Series</p>
-        </div>
-        <p className='font-[600] text-5xl lg:leading-[60px]'>Up to 10% <br></br> off Voucher</p>
-        <div className='flex text-[16px] items-center gap-3  pt-6'>
-        <div className='relative'>
-            <button >Shop Now</button>
-            <img src={line} className='absolute ' alt="line" />
-            </div>
-        <img src={arrow1} className='w-4 h-[14px]' alt="arrow1" />
-        </div>
-        </div>
-      <div className='Left-iphone '>
-        <img src={iphone} alt="iphone" />
-         </div>
-      </div>
-         <img src={pagination} className='pb-2 cursor-pointer mx-auto' alt="pagination" />
-    </div>
-  )
-}
+    <div className="relative bg-black rounded-md overflow-hidden">
+      <div className="flex flex-col-reverse lg:flex-row justify-between items-center lg:items-start gap-6 lg:gap-0 p-8 lg:pl-16 lg:pr-12 text-white">
+        {/* === Text Section === */}
+        <div className="text-center lg:text-left">
+          <div className="flex justify-center lg:justify-start items-center gap-3 mb-4">
+            <img
+              src={appleLogo}
+              alt="Apple logo"
+              className="w-8 sm:w-10 h-10 sm:h-12"
+            />
+            <p className="text-xs sm:text-sm font-light">iPhone 14 Series</p>
+          </div>
 
-export default RightShop
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6">
+            Up to 10% <br className="hidden sm:block" /> off Voucher
+          </h2>
+
+          <div className="flex justify-center lg:justify-start items-center gap-3">
+            <div className="relative">
+              <button className="text-[15px] sm:text-[16px] font-semibold hover:text-[#db4444] transition">
+                Shop Now
+              </button>
+              <img
+                src={line}
+                alt="underline"
+                className="absolute left-0 top-6 sm:top-7 w-[60px] sm:w-[80px]"
+              />
+            </div>
+            <img src={arrow1} alt="arrow" className="w-4 h-[14px]" />
+          </div>
+        </div>
+
+        {/* === Image Section === */}
+        <div className="flex justify-center lg:justify-end w-full lg:w-auto">
+          <img
+            src={iphone}
+            alt="iPhone 14"
+            className="max-w-[180px] sm:max-w-[240px] md:max-w-[280px] lg:max-w-none object-contain"
+          />
+        </div>
+      </div>
+
+      {/* === Pagination Dots === */}
+      <div className="pb-4">
+        <img
+          src={pagination}
+          alt="pagination dots"
+          className="mx-auto w-[80px] sm:w-[100px] cursor-pointer"
+        />
+      </div>
+    </div>
+  );
+};
+
+export default RightShop;

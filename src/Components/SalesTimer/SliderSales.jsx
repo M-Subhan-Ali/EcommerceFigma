@@ -1,70 +1,94 @@
-import StarSales from './StarSales';
+import StarSales from "./StarSales";
 import { CiHeart } from "react-icons/ci";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
-import {FlashSaleData} from './SalesData.jsx';
-import {Swiper,SwiperSlide} from 'swiper/react';
-import {Navigation,FreeMode} from 'swiper/modules';
+import { FlashSaleData } from "./SalesData.jsx";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, FreeMode } from "swiper/modules";
+import "swiper/css";
 
-import 'swiper/css';
+const SliderSales = ({ setWishList, setCart }) => {
+  const handleWishlist = (item) =>
+    setWishList((list) => [...list.filter((x) => x.id !== item.id), item]);
 
-const SliderSales = ({setWishList,setCart}) => {
-  const wishing=(value)=>{
-    setWishList((val)=>{
-      const filteredData=val.filter((val)=>val.id!==value.id)
-      return [...filteredData,value]
-    });
-  }
-  const carting=(value)=>{
-  setCart((val)=>{
-    const filteredData=val.filter((val)=>val.id!==value.id);
-    return [...filteredData,value];
-  })
-  } 
+  const handleCart = (item) =>
+    setCart((list) => [...list.filter((x) => x.id !== item.id), item]);
+
   return (
-    <div className='container mx-auto'>
+    <div className="w-full">
+      <Swiper
+        slidesPerView={1.2}
+        spaceBetween={16}
+        breakpoints={{
+          480: { slidesPerView: 2 },
+          768: { slidesPerView: 3 },
+          1024: { slidesPerView: 4 },
+        }}
+        loop
+        modules={[Navigation, FreeMode]}
+        navigation={{
+          prevEl: ".navigateArrowLeft",
+          nextEl: ".navigateArrowRight",
+        }}
+      >
+        {FlashSaleData.map((item, i) => (
+          <SwiperSlide key={i}>
+            <div className="relative bg-white w-full rounded-md shadow-sm mt-8 p-3 group transition-transform hover:-translate-y-1">
+              <div className="bg-[#f5f5f5] rounded-md p-3 h-[250px] flex flex-col justify-between relative">
+                <p className="absolute top-3 left-3 bg-[#db4444] text-white text-xs px-2 py-[2px] rounded-md font-semibold">
+                  -{item.discount}%
+                </p>
+                <img
+                  src={item.img}
+                  alt={item.title}
+                  className="mx-auto h-[140px] md:h-[160px] object-contain"
+                />
+                <button
+                  onClick={() => handleCart(item)}
+                  className="w-full bg-black text-white py-2 rounded hover:bg-[#db4444] transition"
+                >
+                  Add to cart
+                </button>
+              </div>
 
-    <div className=' flex  justify-between mb-5'>
-      <Swiper slidesPerView={4} 
-          loop={true}
-          modules={[Navigation,FreeMode]}
-          navigation={{prevEl:'.navigateArrowLeft',nextEl:'.navigateArrowRight'}}
-          >
+              <div className="pt-5">
+                <p className="font-semibold text-[15px] md:text-[16px] text-[#1a1a1a] leading-6">
+                  {item.title}
+                </p>
+                <div className="flex gap-3 mt-1">
+                  <span className="text-[#db4444] font-medium text-[15px]">
+                    ${item.currentPrice}
+                  </span>
+                  <span className="line-through text-[#808080] text-[14px]">
+                    ${item.actualPrice}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2 mt-1">
+                  <StarSales star={item.starRate} />
+                  <span className="text-[#808080] text-sm">
+                    ({item.reviews})
+                  </span>
+                </div>
+              </div>
 
-      {FlashSaleData.map((value,index)=>(
-        <SwiperSlide key={index}>
-
-        <div  className='box   relative  w-[270px]  mt-12' >
-          <div className='bg-[#f5f5f5] h-[250px]'>
-                <p className='text-xs w-14 h-6 rounded-md pt-1 text-white text-center font-sans font-[400] bg-[#db4444]'>{value.discount}%</p>
-                <img src={value.img} className='mx-auto  h-44 pt-9 ' alt={value.title|| 'productImage'} />
-               <div className='  bg-[#f5f5f5] text-[#f5f5f5] hover:bg-black   text-center py-2 mt-2 cursor-pointer'><button onClick={()=>carting(value)} className='text-[16px] font-[500] text-white'>Add to cart</button></div>
-          </div>
-                <p className='text-[16px] font-sans font-[600] pt-10 leading-6'>{value.title}</p>
-                <div className='flex gap-3 leading-6'>
-                     <span className='text-[16px] font-[500] text-[#DB4444]'>${value.currentPrice}</span> 
-                    <span className='line-through text-[#808080] text-[16px] font-[500]'>${value.actualPrice}</span>
-                    </div>
-                    <div className='flex gap-4 items-center leading-6'>
-                 <StarSales star={value.starRate} />
-                 <span className='text-[#808080] text-[14px] font-[500]'>({value.reviews})</span>
-                    </div>
-                    <div className='absolute top-0 right-0'>
-                        <div className='flex flex-col gap-2'>
-                   <button onClick={()=>wishing(value)}>
-                     <CiHeart className='w-8 h-8 cursor-pointer' />
-                    </button>
-                    <MdOutlineRemoveRedEye  className='w-8 h-8 cursor-pointer'/>
-                        </div>
-                    </div>
-        </div>
-        </SwiperSlide>
-      ))
-      }
+              <div className="absolute top-3 right-3 flex flex-col gap-2">
+                <button onClick={() => handleWishlist(item)}>
+                  <CiHeart className="w-6 h-6 cursor-pointer hover:text-[#db4444]" />
+                </button>
+                <MdOutlineRemoveRedEye className="w-6 h-6 cursor-pointer hover:text-[#db4444]" />
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
       </Swiper>
-      </div>
-      <p className='text-[16px] mx-auto mt-14 flex items-center justify-center text-white w-[234px] h-14 bg-[#db4444]  font-sans font-[500]'>View All Products</p>
-    </div>
-  )
-}
 
-export default SliderSales
+      {/* === View All Button === */}
+      <div className="flex justify-center">
+        <button className="bg-[#db4444] text-white font-medium mt-10 w-[220px] h-12 rounded hover:bg-[#b93535] transition">
+          View All Products
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default SliderSales;

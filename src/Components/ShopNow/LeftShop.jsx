@@ -1,27 +1,36 @@
-import React from 'react'
-import arrow from '../ShopNow/imagesShop/arrow.png';
+import React from "react";
+import arrow from "../ShopNow/imagesShop/arrow.png";
+
 const LeftShop = () => {
+  const categories = [
+    "Woman’s Fashion",
+    "Men’s Fashion",
+    "Electronics",
+    "Home & Lifestyle",
+    "Medicine",
+    "Sports & Outdoor",
+    "Baby’s & Toys",
+    "Groceries & Pets",
+    "Health & Beauty",
+  ];
+
   return (
-    <div>
-      <ul className='lg:w-[217px]   font-sans font-[400]'>
-       <div className='flex pb-4 items-center justify-between'>
-        <li>Woman’s Fashion</li>
-        <img src={arrow} className='w-2 h-3' alt="arrow" />
-        </div> 
-        <div className='flex pb-4 items-center justify-between'>
-        <li>Men’s Fashion</li>
-        <img src={arrow} className='w-2 h-3' alt="arrow" />
-        </div>
-        <li className='pb-4'>Electronics</li>
-        <li className='pb-4'>Home & Lifestyle</li>
-        <li className='pb-4'>Medicine</li>
-        <li className='pb-4'>Sports & Outdoor</li>
-        <li className='pb-4'>Baby’s & Toys</li>
-        <li className='pb-4'>Groceries & Pets</li>
-        <li className=''>Health & Beauty</li>
+    <div className="border-r border-gray-200 pr-4 sm:pr-6 lg:pr-10 font-sans">
+      <ul className="space-y-4 text-[15px] sm:text-[16px] text-[#1a1a1a] font-[500]">
+        {categories.map((cat, i) => (
+          <li
+            key={i}
+            className="flex items-center justify-between cursor-pointer hover:text-[#db4444] transition-colors"
+          >
+            <span>{cat}</span>
+            {(cat === "Woman’s Fashion" || cat === "Men’s Fashion") && (
+              <img src={arrow} alt="arrow" className="w-2.5 h-3" />
+            )}
+          </li>
+        ))}
       </ul>
     </div>
-  )
-}
+  );
+};
 
-export default LeftShop
+export default LeftShop;

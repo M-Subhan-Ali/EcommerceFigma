@@ -1,21 +1,23 @@
-import React from 'react'
-import LeftShop from './LeftShop'
-import RightShop from './RightShop'
-import line from '../ShopNow/imagesShop/line1.png';
+import React from "react";
+import LeftShop from "./LeftShop";
+import RightShop from "./RightShop";
+
 const Shop = () => {
   return (
-        <div className='container  mx-auto'>
-    <div className='w-full px-[6%]  mx-auto'>
-   
-      <div className='relative pt-10 gap-9 lg:flex lg:justify-between  mx-auto'>
-        <LeftShop/>
-        <RightShop/>
-        <img src={line} className='absolute top-0 left-56 ' alt="line" />
-      </div>
-   
-    </div>
+    <section className="w-full max-w-[1500px] mx-auto px-4 sm:px-8 py-10">
+      <div className="flex flex-col lg:flex-row items-center lg:items-start gap-10 lg:gap-8">
+        {/* === Left Sidebar === */}
+        <div className="w-full lg:w-[25%]">
+          <LeftShop />
         </div>
-  )
-}
 
-export default Shop
+        {/* === Right Banner Section === */}
+        <div className="w-full lg:w-[75%]">
+          <RightShop />
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Shop;
